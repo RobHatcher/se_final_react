@@ -1,22 +1,17 @@
 import { useContext } from "react";
 import "./Header.css";
-import ToggleSwitch from "../ToogleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import logo from "../../assets/NewsExplorer.svg"
+import Navigation from "../Navigation/Navigation";
 
 function Header() {
   return (
     <header className="header">
       <div className="header-content">
-        <div className="logo">
-          <img className="header_logo" src={logo} alt="News Explorer Logo" />
+        <div className="header__logo">
+          <img className="header__img" src={logo} alt="News Explorer Logo" />
         </div>
-        <nav className="nav">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-          <button className="sign-in-button">Sign in</button>
-        </nav>
+        <Navigation />
       </div>
     </header>
   );

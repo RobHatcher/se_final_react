@@ -1,0 +1,44 @@
+.nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 42px;
+  }
+  
+  .nav__home {
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    width: 49px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .nav__home::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; 
+    left: 0;
+    width: 100%;
+    height: 2px; 
+    background-color: #ffffff;
+}
+  
+  .sign-in__btn {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    width: 176px;
+    height: 48px;
+    border-radius: 100px;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff
+  }
+  
+  .sign-in__btn:hover {
+    opacity: 0.8;
+  }
