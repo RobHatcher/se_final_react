@@ -1,4 +1,5 @@
 import React from "react";
+import { FaGithub } from 'react-icons/fa';
 import "./Footer.css";
 
 function Footer() {
@@ -6,12 +7,12 @@ function Footer() {
 
   return (
     <footer className="footer">
-      <div className="left__footer">
+      <div className="footer__left">
         <p className="footer__text">
           &copy;{currentYear} Supersite, Powered by News API
         </p>
       </div>
-      <div className="right__footer">
+      <div className="footer__right">
         <a href="/" className="footer__link">
           Home
         </a>
@@ -29,7 +30,7 @@ function Footer() {
           rel="noreferrer"
           className="footer__link"
         >
-          GitHub
+          <FaGithub />
         </a>
       </div>
     </footer>
