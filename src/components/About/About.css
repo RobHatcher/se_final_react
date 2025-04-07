@@ -20,6 +20,10 @@
     border-radius: 1000%;
 }
 
+.about__image-container {
+    margin-left: 64px; 
+}
+
 .about__title {
     font-family: "Roboto-Slab", sans-serif;
     font-weight: 400;
