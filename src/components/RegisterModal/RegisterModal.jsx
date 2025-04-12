@@ -9,6 +9,7 @@ const RegisterModal = ({
   handleSigninClick,
   isOpen,
 }) => {
+  const [isFormValid, setIsFormValid] = useState(false);
   const { values, handleChange, setValues } = useForm({
     _id: null,
     email: "",
@@ -24,10 +25,19 @@ const RegisterModal = ({
   function resetForm() {
     setValues({
       email: "",
-      password: "",  
+      password: "",
       name: "",
     });
   }
+
+  useEffect(() => {
+    const isValid =
+      values.email.length > 0 &&
+      values.password.length > 0 &&
+      values.name.length > 0;
+
+    setIsFormValid(isValid);
+  }, [values]);
 
   useEffect(() => {
     if (isOpen) {
@@ -38,11 +48,12 @@ const RegisterModal = ({
   return (
     <ModalWithForm
       title="Sign Up"
-      buttonText="Sign UP"
+      buttonText="Sign Up"
       isOpen={isOpen}
       handleSignupClick={handleSignupClick}
       onClose={onClose}
       onSubmit={handleSubmit}
+      modalType="register"
     >
       <label htmlFor="email" className="modal__label">
         Email{" "}
@@ -99,11 +110,17 @@ const RegisterModal = ({
           required
         />
       </label> */}
-      <div className="modal__button-wrapper">
-        <button type="submit" className="modal__submit">Sign Up</button>
-        <button type="button" className="modal__or-register-btn" onClick={handleSigninClick}>
+      <div className="modal__button-container">
+        <button type="submit" className="modal__submit" disabled={!isFormValid}>
+          Sign Up
+        </button>
+        <button
+          type="button"
+          className="modal__or-switch-btn"
+          onClick={handleSigninClick}
+        >
           {" "}
-          or Log In
+          or <strong>Sign In</strong>
         </button>
       </div>
     </ModalWithForm>

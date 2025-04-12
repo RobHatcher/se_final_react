@@ -13,6 +13,11 @@ const LoginModal = ({
     email: "",
     password: "",
   });
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    setIsFormValid(values.email.length > 0 && values.password.length > 0);
+  }, [values.email, values.password]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,11 +40,12 @@ const LoginModal = ({
   return (
     <ModalWithForm
       title="Log In"
-      buttonText="Log In"
+      buttonText="Sign In"
       isOpen={isOpen}
       handleSigninClick={handleSigninClick}
       onClose={onClose}
       onSubmit={handleSubmit}
+      modalType="login"
     >
       <label htmlFor="email" className="modal__label">
         Email{" "}
@@ -70,17 +76,17 @@ const LoginModal = ({
           required
         />
       </label>
-      <div>
-        <button type="submit" className="modal__submit">
+      <div className="modal__button-container">
+        <button type="submit" className="modal__submit" disabled={!isFormValid}>
           Sign In
         </button>
         <button
           type="button"
-          className="modal__or-login-btn"
+          className="modal__or-switch-btn"
           onClick={handleSignupClick}
         >
           {" "}
-          or Register
+          or <strong>Sign Up</strong>
         </button>
       </div>
     </ModalWithForm>

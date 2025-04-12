@@ -1,44 +1,73 @@
 .nav {
-    display: flex;
-    align-items: center;
-    position: relative;
-    gap: 42px;
-  }
-  
-  .nav__home {
-    text-decoration: none;
-    color: #ffffff;
-    position: relative;
-    width: 49px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 24px;
-  }
-
-  .nav__home::after {
-    content: '';
-    position: absolute;
-    bottom: -30px; 
-    left: 0;
-    width: 100%;
-    height: 2px; 
-    background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 42px;
 }
-  
-  .sign-in__btn {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 24px;
-    width: 176px;
-    height: 48px;
-    border-radius: 100px;
-    background-color: transparent;
-    border: 1px solid #ffffff;
-    color: #ffffff
-  }
-  
-  .sign-in__btn:hover {
-    opacity: 0.8;
-  }
+
+.navigation__link {
+  color: #fff;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  position: relative;
+  text-decoration: none;
+}
+
+.navigation__link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%; 
+  height: 3px; 
+  background-color: #FFFFFF;
+}
+
+.navigation__link_dark.active::after {
+  background-color: #000000;
+}
+
+.navigation__button {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  padding: 12px 19px;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  width: 176px;
+  height: 48px;
+}
+
+.navigation__logout-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  border: 1px solid;
+}
+
+.navigation__logout-text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.navigation__logout-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.navigation__link_dark {
+  color: #1a1b22;
+}
+
+.navigation__button_dark {
+  border-color: #1a1b22;
+  color: #1a1b22;
+}

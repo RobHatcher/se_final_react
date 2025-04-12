@@ -1,51 +1,128 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 // Elements to App
 import Main from "../Main/Main";
-import Profile from "../Profile/Profile";
-// import SavedNews from "../SavedNews/SavedNews";
+import SavedNews from "../SavedNews/SavedNews";
 import Header from "../Header/header";
 import Footer from "../Footer/Footer";
 import About from "../About/About";
 // Modal Elements
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+// Mock Authorization
+import { useAuth } from "../../utils/AuthContext";
 
 function App() {
+  const { register, login, logout, currentUser, token } = useAuth();
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSigninClick = () => {
     setActiveModal("login");
   };
-  
+
   const handleSignupClick = () => {
     setActiveModal("register");
   };
-  
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
 
-  const handleLogin = () => {
-    setIsLoading(true);
-    // Login logic will go here
+  const handleLogin = async (values) => {
+    try {
+      setIsLoading(true);
+      await login(values);
+      closeActiveModal();
+    } catch (error) {
+      console.error("Login failed:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleRegisterUser = () => {
-    setIsLoading(true);
-    // Register logic will go here
+  const handleRegisterUser = async (values) => {
+    try {
+      setIsLoading(true);
+      await register(values);
+      closeActiveModal(); // This replaces your onClose
+    } catch (error) {
+      console.error("Registration failed:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  const handleLogout = () => {
+    logout();
+  };
+
+  // useEffects
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
 
   return (
     <>
-      <Header onSignInClick={handleSigninClick} />
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/profile" element={<Profile />} />
-        {/* <Route path="/saved-news" element={<SavedNews />} /> */}
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Header
+                onSignInClick={handleSigninClick}
+                theme="light"
+                isLoggedIn={!!token}
+                currentUser={currentUser?.name}
+                onLogoutClick={handleLogout}
+              />
+              <Main />
+            </>
+          }
+        />
+        <Route
+          path="/saved-news"
+          element={
+            <>
+              <Header
+                onSignInClick={handleSigninClick}
+                theme="dark"
+                isLoggedIn={!!token}
+                currentUser={currentUser?.name}
+                onLogoutClick={handleLogout}
+              />
+              <SavedNews />
+            </>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <>
+              <Header
+                onSignInClick={handleSigninClick}
+                theme="light"
+                isLoggedIn={!!token}
+                currentUser={currentUser?.name}
+                onLogoutClick={handleLogout}
+              />
+              <About />
+            </>
+          }
+        />
       </Routes>
       <Footer />
       {activeModal === "register" && (
@@ -53,7 +130,7 @@ function App() {
           isOpen={activeModal === "register"}
           onClose={closeActiveModal}
           onRegister={handleRegisterUser}
-          handleLoginClick={handleSigninClick}
+          handleSigninClick={handleSigninClick}
           buttonText={isLoading ? "Saving..." : "Sign up"}
         />
       )}
@@ -62,8 +139,8 @@ function App() {
           isOpen={activeModal === "login"}
           onClose={closeActiveModal}
           onLogin={handleLogin}
-          handleRegisterClick={handleSignupClick}
-          buttonText={isLoading ? "Saving..." : "Log in"}
+          handleSignupClick={handleSignupClick}
+          buttonText={isLoading ? "Saving..." : "Sign in"}
         />
       )}
     </>
