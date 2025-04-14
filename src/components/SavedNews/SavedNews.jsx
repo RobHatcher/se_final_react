@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "./SavedNews.css";
+import mockBookmarkService from "../../utils/mockBookmarkService";
+import NewsCard from "../NewsCard/NewsCard";
 
 function SavedNews() {
   const [savedArticles, setSavedArticles] = useState([]);
-  // You might want to get the currentUser from your context or props
-  // This is just a placeholder - you'll need to connect it to your actual user data
-  const currentUser = { name: "John" }; // Replace with actual user data
+  const currentUser = { name: "John" }; 
+
+  useEffect(() => {
+    const fetchSavedArticles = () => {
+      const articles = mockBookmarkService.getBookmarks();
+      setSavedArticles(articles);
+    };
+    fetchSavedArticles();
+  }, []);
 
   return (
     <main className="saved-news">
@@ -26,10 +34,12 @@ function SavedNews() {
           <p className="saved-news__empty">No saved articles yet</p>
         ) : (
           <div className="saved-news__grid">
-            {savedArticles.map((article, index) => (
-              <article key={index} className="saved-news__card">
-                {/* Article content will go here */}
-              </article>
+            {savedArticles.map((article) => (
+              <NewsCard
+                key={article.url}
+                article={article}
+                isLoggedIn={true}
+              />
             ))}
           </div>
         )}

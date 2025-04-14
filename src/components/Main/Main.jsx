@@ -2,11 +2,10 @@ import { useState } from "react";
 import "./Main.css";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsSection from "../NewsSection/NewsSection";
-import NewsCardList from "../NewsCard/NewsCard";
 import api from "../../utils/api";
 import About from "../About/About";
 
-function Main() {
+function Main({isLoggedIn}) {
   const [searchResults, setSearchResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [searchError, setSearchError] = useState("");
@@ -45,6 +44,7 @@ function Main() {
             articles={searchResults}
             isLoading={isLoading}
             error={searchError}
+            isLoggedIn={isLoggedIn}
         />
 
       <About />

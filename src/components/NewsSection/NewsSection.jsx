@@ -4,7 +4,7 @@ import Preloader from "../Preloader/Preloader";
 import NewsCard from "../NewsCard/NewsCard";
 import notFoundIcon from "../../assets/not-found_v1.svg";
 
-const NewsSection = ({ articles, isLoading, error }) => {
+const NewsSection = ({ articles, isLoading, error, isLoggedIn }) => {
   // If no search has been made yet, return null (no display)
   if (!articles && !isLoading && !error) {
     return null;
@@ -50,7 +50,11 @@ const NewsSection = ({ articles, isLoading, error }) => {
   return (
     <section className="news-section">
       <h2 className="news-section__results">Search Results</h2>
-      <div className="news-section__cards">{/* News cards mapping here */}</div>
+      <div className="news-section__cards">
+        {articles.map((article, index) => (
+          <NewsCard key={index} article={article} isLoggedIn={isLoggedIn} />
+        ))}
+      </div>
       <button className="show-more-button">Show more</button>
     </section>
   );

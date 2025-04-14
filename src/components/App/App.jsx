@@ -17,6 +17,8 @@ function App() {
   const { register, login, logout, currentUser, token } = useAuth();
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [articles, setArticles] = useState([]);
+  const [searchError, setSearchError] = useState(null);
 
   const handleSigninClick = () => {
     setActiveModal("login");
@@ -24,6 +26,10 @@ function App() {
 
   const handleSignupClick = () => {
     setActiveModal("register");
+  };
+
+  const handleLogout = () => {
+    logout();
   };
 
   const closeActiveModal = () => {
@@ -46,16 +52,13 @@ function App() {
     try {
       setIsLoading(true);
       await register(values);
-      closeActiveModal(); // This replaces your onClose
+      return true; 
     } catch (error) {
       console.error("Registration failed:", error);
+      return false;
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleLogout = () => {
-    logout();
   };
 
   // useEffects
@@ -89,7 +92,7 @@ function App() {
                 currentUser={currentUser?.name}
                 onLogoutClick={handleLogout}
               />
-              <Main />
+              <Main isLoggedIn={!!token} />
             </>
           }
         />
