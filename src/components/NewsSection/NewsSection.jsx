@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NewsSection.css";
 import Preloader from "../Preloader/Preloader";
 import NewsCard from "../NewsCard/NewsCard";
 import notFoundIcon from "../../assets/not-found_v1.svg";
+import { useAuth } from "../../utils/AuthContext";
 
-const NewsSection = ({ articles, isLoading, error, isLoggedIn }) => {
-  // If no search has been made yet, return null (no display)
+const NewsSection = ({
+  articles,
+  isLoading,
+  error,
+  isLoggedIn,
+  searchKeyword,
+}) => {
+  const { currentUser } = useAuth();
+  const [visibleCount, setVisibleCount] = useState(3);
+  const handleShowMore = () => {
+    setVisibleCount((prevCount) => prevCount + 3);
+  };
+
   if (!articles && !isLoading && !error) {
     return null;
   }
@@ -51,11 +63,21 @@ const NewsSection = ({ articles, isLoading, error, isLoggedIn }) => {
     <section className="news-section">
       <h2 className="news-section__results">Search Results</h2>
       <div className="news-section__cards">
-        {articles.map((article, index) => (
-          <NewsCard key={index} article={article} isLoggedIn={isLoggedIn} />
+        {articles.slice(0, visibleCount).map((article, index) => (
+          <NewsCard
+            key={index}
+            article={article}
+            isLoggedIn={isLoggedIn}
+            keyword={searchKeyword}
+            currentUser={currentUser}
+          />
         ))}
       </div>
-      <button className="show-more-button">Show more</button>
+      {articles.length > visibleCount && (
+        <button className="show-more-button" onClick={handleShowMore}>
+          Show more
+        </button>
+      )}
     </section>
   );
 };

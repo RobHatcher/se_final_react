@@ -9,13 +9,14 @@ function Main({isLoggedIn}) {
   const [searchResults, setSearchResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [searchError, setSearchError] = useState("");
+  const [currentKeyword, setCurrentKeyword] = useState("");
 
   const handleSearchSubmit = async (searchQuery) => {
+    setCurrentKeyword(searchQuery);
     setIsLoading(true);
     setSearchError("");
     try {
       const response = await api.getNews(searchQuery);
-      // Add artificial delay of 1.5 seconds
       await new Promise(resolve => setTimeout(resolve, 1500));
       setSearchResults(response.articles);
     } catch (error) {
@@ -45,6 +46,7 @@ function Main({isLoggedIn}) {
             isLoading={isLoading}
             error={searchError}
             isLoggedIn={isLoggedIn}
+            searchKeyword={currentKeyword}
         />
 
       <About />

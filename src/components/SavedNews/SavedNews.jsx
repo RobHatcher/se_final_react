@@ -2,30 +2,44 @@ import React, { useState, useEffect } from "react";
 import "./SavedNews.css";
 import mockBookmarkService from "../../utils/mockBookmarkService";
 import NewsCard from "../NewsCard/NewsCard";
+import { useAuth } from "../../utils/AuthContext";
 
 function SavedNews() {
   const [savedArticles, setSavedArticles] = useState([]);
-  const currentUser = { name: "John" }; 
+  const [keywords, setKeywords] = useState([]);
+  const { currentUser } = useAuth();
+  console.log(currentUser);
+
+  const fetchSavedArticles = () => {
+    const articles = mockBookmarkService.getBookmarks(currentUser?._id);
+    console.log('Fetched articles:', articles);
+    setSavedArticles(articles);
+
+    const uniqueKeywords = [
+      ...new Set(
+        articles.map((article) => article.keyword).filter((keyword) => keyword)
+      ),
+    ];
+    setKeywords(uniqueKeywords);
+  };
 
   useEffect(() => {
-    const fetchSavedArticles = () => {
-      const articles = mockBookmarkService.getBookmarks();
-      setSavedArticles(articles);
-    };
-    fetchSavedArticles();
-  }, []);
+    if (currentUser) {
+      fetchSavedArticles();
+    }
+  }, [currentUser]);
 
   return (
     <main className="saved-news">
       <div className="saved-news__header">
         <h1 className="saved-news__title">Saved articles</h1>
         <p className="saved-news__greeting">
-          {currentUser.name}, you have {savedArticles.length} saved articles
+          {currentUser?.name}, you have {savedArticles.length} saved articles
         </p>
         <p className="saved-news__keywords">
           By Keywords:{" "}
           <span className="saved-news__keywords-list">
-            nature, pets, science
+            {keywords.join(", ") || "No keywords yet"}
           </span>
         </p>
       </div>
@@ -39,6 +53,10 @@ function SavedNews() {
                 key={article.url}
                 article={article}
                 isLoggedIn={true}
+                keyword={article.keyword}
+                isSaved={true}
+                onArticleRemove={fetchSavedArticles} 
+                currentUser={currentUser}
               />
             ))}
           </div>

@@ -12,13 +12,13 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 // Mock Authorization
 import { useAuth } from "../../utils/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const { register, login, logout, currentUser, token } = useAuth();
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [articles, setArticles] = useState([]);
-  const [searchError, setSearchError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSigninClick = () => {
     setActiveModal("login");
@@ -30,7 +30,8 @@ function App() {
 
   const handleLogout = () => {
     logout();
-  };
+    navigate('/');
+};
 
   const closeActiveModal = () => {
     setActiveModal("");
