@@ -9,6 +9,7 @@ const RegisterModal = ({
   handleSignupClick,
   handleSigninClick,
   isOpen,
+  showConfirmationModal,
 }) => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
@@ -18,6 +19,19 @@ const RegisterModal = ({
     password: "",
     name: "",
   });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const success = await onRegister(values);
+      if (success) {
+        onClose();  // First close register modal
+        showConfirmationModal();
+      }
+    } catch (error) {
+      console.log("Registration error:", error);
+    }
+  };
 
   const handleConfirmationModalClose = () => {
     setIsConfirmationModalOpen(false);
@@ -29,18 +43,6 @@ const RegisterModal = ({
     });
     onClose();
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const success = await onRegister(values);
-      if (success) {
-        setIsConfirmationModalOpen(true);
-      }
-    } catch (error) {
-      console.log("Registration error:", error);
-    }
-};
 
   function resetForm() {
     setValues({
@@ -75,6 +77,7 @@ const RegisterModal = ({
 
   return (
     <>
+    {isOpen && (
       <ModalWithForm
         title="Sign Up"
         buttonText="Sign Up"
@@ -144,12 +147,13 @@ const RegisterModal = ({
           </button>
         </div>
       </ModalWithForm>
+      )}
       <ConfirmationModal
         isOpen={isConfirmationModalOpen}
         onClose={handleConfirmationModalClose}
       />
     </>
   );
-};
+}
 
 export default RegisterModal;

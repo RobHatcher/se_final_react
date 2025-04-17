@@ -1,5 +1,6 @@
 import React from "react";
-import { FaGithub } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+import { FaGithub } from "react-icons/fa";
 import "./Footer.css";
 
 function Footer() {
@@ -13,9 +14,9 @@ function Footer() {
         </p>
       </div>
       <div className="footer__right">
-        <a href="/" className="footer__link">
+        <Link to="/" className="footer__link">
           Home
-        </a>
+        </Link>
         <a
           href="https://tripleten.com"
           target="_blank"

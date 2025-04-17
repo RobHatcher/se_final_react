@@ -8,11 +8,9 @@ function SavedNews() {
   const [savedArticles, setSavedArticles] = useState([]);
   const [keywords, setKeywords] = useState([]);
   const { currentUser } = useAuth();
-  console.log(currentUser);
 
   const fetchSavedArticles = () => {
     const articles = mockBookmarkService.getBookmarks(currentUser?._id);
-    console.log('Fetched articles:', articles);
     setSavedArticles(articles);
 
     const uniqueKeywords = [

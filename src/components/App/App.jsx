@@ -10,6 +10,7 @@ import About from "../About/About";
 // Modal Elements
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 // Mock Authorization
 import { useAuth } from "../../utils/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +19,7 @@ function App() {
   const { register, login, logout, currentUser, token } = useAuth();
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSigninClick = () => {
@@ -30,11 +32,19 @@ function App() {
 
   const handleLogout = () => {
     logout();
-    navigate('/');
-};
+    navigate("/");
+  };
+
+  const showConfirmationModal = () => {
+    setIsConfirmationModalOpen(true);
+  };
 
   const closeActiveModal = () => {
     setActiveModal("");
+  };
+
+  const handleConfirmationModalClose = () => {
+    setIsConfirmationModalOpen(false);
   };
 
   const handleLogin = async (values) => {
@@ -53,7 +63,7 @@ function App() {
     try {
       setIsLoading(true);
       await register(values);
-      return true; 
+      return true;
     } catch (error) {
       console.error("Registration failed:", error);
       return false;
@@ -64,11 +74,13 @@ function App() {
 
   // useEffects
   useEffect(() => {
-    if (!activeModal) return;
-
     const handleEscClose = (e) => {
       if (e.key === "Escape") {
-        closeActiveModal();
+        if (isConfirmationModalOpen) {
+          setIsConfirmationModalOpen(false);
+        } else if (activeModal) {
+          closeActiveModal();
+        }
       }
     };
 
@@ -77,7 +89,7 @@ function App() {
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  }, [activeModal]);
+  }, [activeModal, isConfirmationModalOpen]);
 
   return (
     <>
@@ -136,6 +148,7 @@ function App() {
           onRegister={handleRegisterUser}
           handleSigninClick={handleSigninClick}
           buttonText={isLoading ? "Saving..." : "Sign up"}
+          showConfirmationModal={showConfirmationModal}
         />
       )}
       {activeModal === "login" && (
@@ -147,6 +160,10 @@ function App() {
           buttonText={isLoading ? "Saving..." : "Sign in"}
         />
       )}
+      <ConfirmationModal
+        isOpen={isConfirmationModalOpen}
+        onClose={handleConfirmationModalClose}
+      />
     </>
   );
 }
