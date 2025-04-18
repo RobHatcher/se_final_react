@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 import "./Footer.css";
 
 function Footer() {
@@ -32,6 +33,14 @@ function Footer() {
           className="footer__link"
         >
           <FaGithub />
+        </a>
+        <a
+          href="https://facebook.com"
+          target="_blank"
+          rel="noreferrer"
+          className="footer__link"
+        >
+          <FaFacebook />
         </a>
       </div>
     </footer>

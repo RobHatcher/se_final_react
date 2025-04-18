@@ -11,6 +11,8 @@ function Header({
   isLoggedIn,
   currentUser,
   onLogoutClick,
+  activeModal,
+  onClose
 }) {
   const logo = theme === "dark" ? darkLogo : lightLogo;
 
@@ -28,6 +30,8 @@ function Header({
           isLoggedIn={isLoggedIn}
           currentUser={currentUser}
           onLogoutClick={onLogoutClick}
+          activeModal={activeModal}
+          onClose={onClose}
         />
       </div>
     </header>

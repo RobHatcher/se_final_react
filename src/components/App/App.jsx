@@ -22,6 +22,7 @@ function App() {
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
   const navigate = useNavigate();
 
+  // Handlers
   const handleSigninClick = () => {
     setActiveModal("login");
   };
@@ -104,6 +105,8 @@ function App() {
                 isLoggedIn={!!token}
                 currentUser={currentUser?.name}
                 onLogoutClick={handleLogout}
+                activeModal={activeModal}
+                onClose={closeActiveModal}
               />
               <Main isLoggedIn={!!token} />
             </>
@@ -119,6 +122,8 @@ function App() {
                 isLoggedIn={!!token}
                 currentUser={currentUser?.name}
                 onLogoutClick={handleLogout}
+                activeModal={activeModal}
+                onClose={closeActiveModal}
               />
               <SavedNews />
             </>
@@ -134,6 +139,8 @@ function App() {
                 isLoggedIn={!!token}
                 currentUser={currentUser?.name}
                 onLogoutClick={handleLogout}
+                activeModal={activeModal}
+                onClose={closeActiveModal}
               />
               <About />
             </>
