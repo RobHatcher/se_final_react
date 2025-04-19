@@ -25,7 +25,7 @@ const RegisterModal = ({
     try {
       const success = await onRegister(values);
       if (success) {
-        onClose();  // First close register modal
+        onClose();
         showConfirmationModal();
       }
     } catch (error) {
@@ -94,7 +94,7 @@ const RegisterModal = ({
             className="modal__input"
             name="email"
             id="email"
-            placeholder="Email"
+            placeholder="Enter Email"
             minLength="5"
             maxLength="40"
             value={values.email}
@@ -109,7 +109,7 @@ const RegisterModal = ({
             className="modal__input"
             name="password"
             id="password"
-            placeholder="Password"
+            placeholder="Enter Password"
             value={values.password}
             onChange={handleChange}
             autoComplete="on"
@@ -123,7 +123,7 @@ const RegisterModal = ({
             className="modal__input"
             name="name"
             id="name"
-            placeholder="Username"
+            placeholder="Create a Username"
             value={values.name}
             onChange={handleChange}
             required

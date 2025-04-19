@@ -1,8 +1,9 @@
-import { useContext } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
+// NewsExplorer Logo
 import lightLogo from "../../assets/NewsExplorer.svg";
 import darkLogo from "../../assets/NewsExplorerblk.svg";
+// Other Imports
 import Navigation from "../Navigation/Navigation";
 
 function Header({

@@ -71,7 +71,7 @@
   list-style: none;
 }
 
-/* Mobile view (320px) */
+/* Media Queries */
 @media screen and (max-width: 320px) {
   .main__title {
     font-size: 36px;

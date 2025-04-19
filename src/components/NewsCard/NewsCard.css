@@ -173,15 +173,16 @@
   margin-top: 40px;
 }
 
+/* Media Queries */
 @media screen and (max-width: 768px) {
   .news-card {
     width: 224px;
-    height: 420px; /* Adjust height proportionally */
+    height: 420px;
   }
 
   .card__image-container {
     width: 224px;
-    height: 152px; /* Adjust height proportionally */
+    height: 152px;
   }
 
   .card__title {
@@ -201,7 +202,6 @@
   }
 }
 
-/* Mobile view (320px) */
 @media screen and (max-width: 320px) {
   .news-card {
     width: 288px;

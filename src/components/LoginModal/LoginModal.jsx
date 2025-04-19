@@ -1,6 +1,6 @@
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import React, { useState, useEffect } from "react";
 import { useForm } from "../../hooks/hooks";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const LoginModal = ({
   onClose,

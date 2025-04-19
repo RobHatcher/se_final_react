@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
 // Elements to App
 import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import Header from "../Header/header";
 import Footer from "../Footer/Footer";
-import About from "../About/About";
 // Modal Elements
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 // Mock Authorization
 import { useAuth } from "../../utils/AuthContext";
-import { useNavigate } from "react-router-dom";
 
 function App() {
+  //Hooks
   const { register, login, logout, currentUser, token } = useAuth();
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -126,23 +126,6 @@ function App() {
                 onClose={closeActiveModal}
               />
               <SavedNews />
-            </>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <>
-              <Header
-                onSignInClick={handleSigninClick}
-                theme="light"
-                isLoggedIn={!!token}
-                currentUser={currentUser?.name}
-                onLogoutClick={handleLogout}
-                activeModal={activeModal}
-                onClose={closeActiveModal}
-              />
-              <About />
             </>
           }
         />

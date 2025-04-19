@@ -57,6 +57,10 @@
     margin-top: 64px;
 }
 
+.show-more-button:hover {
+  filter: brightness(0.7);
+}
+
 .preloader {
     width: 96px;
     height: 96px;
@@ -65,11 +69,11 @@
     align-items: center;
 }
 
-/* Tablet view (768px) */
+/* Media Queries */
 @media screen and (max-width: 768px) {
     .news-section__results {
       font-size: 30px;
-      width: 100%; /* Make it responsive */
+      width: 100%; 
     }
     
     .news-section {
@@ -78,11 +82,10 @@
   
     .news-section__cards {
       justify-content: center;
-      gap: 8px; /* Reduce gap for tablet view */
+      gap: 8px;
     }
   }
   
-  /* Mobile view (320px) */
   @media screen and (max-width: 320px) {
     .news-section__cards {
       flex-direction: column;

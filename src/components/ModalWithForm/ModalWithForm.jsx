@@ -1,9 +1,9 @@
 import "./ModalWithForm.css";
+// Close Icon
 import closebtn from "../../assets/close.svg";
 
 function ModalWithForm({
     children,
-    buttonText,
     title,
     isOpen,
     onClose,
@@ -23,9 +23,6 @@ function ModalWithForm({
           </button>
           <form onSubmit={onSubmit} className="modal__form">
             {children}
-            {/* <button type="submit" className="modal__submit">
-              {buttonText}
-            </button> */}
           </form>
         </div>
       </div>

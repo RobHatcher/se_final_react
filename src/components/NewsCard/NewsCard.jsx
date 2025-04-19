@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./NewsCard.css";
+// Icon Imports
 import bookmarkIcon from "../../assets/bookmark-icon.svg";
 import bookmarkMarkedIcon from "../../assets/bookmark-marked.svg";
-import mockBookmarkService from "../../utils/mockBookmarkService";
 import trashIcon from "../../assets/trash.svg";
+// Mock Service
+import mockBookmarkService from "../../utils/mockBookmarkService";
 
 function NewsCard({ article, isLoggedIn, keyword, isSaved, onArticleRemove, currentUser }) {
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -26,10 +28,6 @@ function NewsCard({ article, isLoggedIn, keyword, isSaved, onArticleRemove, curr
   };
 
   const handleBookmarkClick = () => {
-    console.log('Bookmark clicked');
-    console.log('Current user:', currentUser);
-    console.log('User ID being used:', currentUser.id);
-    console.log('User _id from object:', currentUser._id);
     if (isLoggedIn && currentUser) {
       if (isBookmarked) {
         mockBookmarkService.removeBookmark(url, currentUser._id);

@@ -37,6 +37,7 @@
     color: #8B8E90;
 }
 
+/* Media Queries */
 @media screen and (max-width: 768px) {
     .footer {
         padding: 10px 15px;
@@ -47,7 +48,6 @@
     }
 }
 
-/* Mobile viewport (320px) */
 @media screen and (max-width: 320px) {
     .footer {
         flex-direction: column;

@@ -2,8 +2,9 @@ import { useState } from "react";
 import "./Main.css";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsSection from "../NewsSection/NewsSection";
-import api from "../../utils/api";
 import About from "../About/About";
+// API 
+import api from "../../utils/api";
 
 function Main({isLoggedIn}) {
   const [searchResults, setSearchResults] = useState(null);

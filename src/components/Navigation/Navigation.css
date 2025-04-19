@@ -178,13 +178,12 @@
     gap: 42px;
   }
 
-  /* Adjust sign in button width specifically for tablet */
   .navigation__button {
     width: 152px;
   }
 
   .navigation__logout-btn {
-    min-width: 100px;
+    width: 100%;
   }
 }
 
@@ -220,11 +219,5 @@
 @media screen and (min-width: 321px) {
   .navigation__mobile-menu {
     display: none !important;
-  }
-}
-
-@media screen and (min-width: 769px) {
-  .navigation__button {
-    width: 176px;
   }
 }

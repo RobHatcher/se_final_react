@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 //Mobile Menu logos
 import menuIconBlack from "../../assets/menublk.svg";
