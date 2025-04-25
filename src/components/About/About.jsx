@@ -10,12 +10,6 @@ function About() {
       <div className="about__content">
         <h2 className="about__title">About the author</h2>
         <p className="about__text">
-          My name is Robert Hatcher. I am a High school history teacher and
-          soccer coach. I also have run my own destination wedding videography
-          business since 2015, with my wife. We have traveled to many different
-          countries including Italy, Switzerland, Iceland, and Portugal.
-        </p>
-        <p className="about__text">
           I started my journey to learning Software Engineering because I am
           always looking for ways to challange myself. I challenge myself to do
           hard things, to open doors to other oppotunities in my life. This

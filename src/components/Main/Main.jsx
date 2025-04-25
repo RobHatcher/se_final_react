@@ -49,8 +49,9 @@ function Main({isLoggedIn}) {
             isLoggedIn={isLoggedIn}
             searchKeyword={currentKeyword}
         />
-
+      <section>
       <About />
+      </section>
     </main>
   );
 }

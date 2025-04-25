@@ -49,6 +49,12 @@
 }
 
 /* Media Queries */
+@media screen and (min-width: 321px) and (max-width: 768px) {
+  .search-form {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .search-form {
     display: flex;

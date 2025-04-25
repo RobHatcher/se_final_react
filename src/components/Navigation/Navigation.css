@@ -31,7 +31,7 @@
   background-color: #ffffff;
 }
 
-.navigation__link_dark.active::after {
+.navigation__link--theme-dark.active::after {
   background-color: #000000;
 }
 
@@ -71,11 +71,11 @@
   height: 24px;
 }
 
-.navigation__link_dark {
+.navigation__link--theme-dark {
   color: #1a1b22;
 }
 
-.navigation__button_dark {
+.navigation__button--theme-dark {
   border-color: #1a1b22;
   color: #1a1b22;
 }
@@ -95,7 +95,7 @@
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.navigation__mobile-menu_opened {
+.navigation__mobile-menu--state-opened {
   opacity: 1;
   visibility: visible;
   display: block;
@@ -109,8 +109,28 @@
   gap: 20px;
   width: 100%;
   min-height: 230px;
+  align-items: flex-start;
+  margin-top: 0;
+  padding-top: 56px;
+}
+
+.navigation__mobile-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background-color: #1a1b22;
+  z-index: 1001;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 56px;
+  padding: 16px 32px 16px 16px;
+  border-bottom: solid  #C4C4C420;
+}
+
+.navigation__mobile-logo {
+  height: 24px;
 }
 
 .navigation__menu-button {
@@ -120,11 +140,11 @@
   padding: 0;
   margin: 0;
   cursor: pointer;
-  position: absolute;
-  right: 16px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2000;
+  height: 24px;
+  width: 24px;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -146,12 +166,12 @@
 }
 
 /* Saved News Mobile */
-.navigation__logout-btn_mobile {
+.navigation__logout-btn--view-mobile {
   color: white;
   border: 1px solid white;
 }
 
-.navigation__logout-btn_mobile .navigation__logout-text {
+.navigation__logout-btn--view-mobile .navigation__logout-text {
   color: white;
 }
 
@@ -192,6 +212,8 @@
     display: block;
     background-color: transparent;
     border: none;
+    position: relative;
+    right: 16px;
   }
 
   .navigation__desktop-links {
@@ -210,9 +232,8 @@
     display: none;
   }
 
-  .navigation__mobile-container .navigation__logout-btn {
+  .navigation__mobile-container .navigation__logout-btn--view-mobile {
     width: 150px !important;
-    margin: 0 auto;
   }
 }
 

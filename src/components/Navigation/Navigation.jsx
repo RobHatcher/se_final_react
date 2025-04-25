@@ -7,6 +7,8 @@ import menuIconWhite from "../../assets/menu.svg";
 //Logout logos
 import logoutIconBlack from "../../assets/logout.svg";
 import logoutIconWhite from "../../assets/logout-wht.svg";
+//NewsExplorer Logo
+import lightLogo from "../../assets/NewsExplorer.svg";
 //Close For Mobile Menu
 import closeIcon from "../../assets/close.svg";
 
@@ -17,22 +19,22 @@ function Navigation({
   onLogoutClick,
   currentUser,
   activeModal,
-  onClose
+  onClose,
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinkClass = `navigation__link ${
-    theme === "dark" ? "navigation__link_dark" : ""
+    theme === "dark" ? "navigation__link--theme-dark" : ""
   }`;
   const buttonClass = `navigation__button ${
-    theme === "dark" ? "navigation__button_dark" : ""
+    theme === "dark" ? "navigation__button--theme-dark" : ""
   }`;
 
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     if (activeModal) {
       onClose();
-     }
+    }
   };
 
   return (
@@ -90,9 +92,16 @@ function Navigation({
       {/* Mobile Menu Overlay */}
       <div
         className={`navigation__mobile-menu ${
-          isMobileMenuOpen ? "navigation__mobile-menu_opened" : ""
+          isMobileMenuOpen ? "navigation__mobile-menu--state-opened" : ""
         }`}
       >
+        <div className="navigation__mobile-header">
+          <img
+            src={lightLogo}
+            alt="NewsExplorer Logo White"
+            className="navigation__mobile-logo"
+          />
+        </div>
         <div className="navigation__mobile-container">
           <NavLink
             to="/"
@@ -112,7 +121,7 @@ function Navigation({
                 Saved Articles
               </NavLink>
               <button
-                className={`${buttonClass} navigation__logout-btn navigation__logout-btn_mobile`}
+                className={`${buttonClass} navigation__logout-btn navigation__logout-btn--view-mobile`}
                 onClick={() => {
                   onLogoutClick();
                   handleMobileMenuToggle();

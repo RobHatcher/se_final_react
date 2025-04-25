@@ -55,33 +55,33 @@ function NewsCard({ article, isLoggedIn, keyword, isSaved, onArticleRemove, curr
 
   return (
     <article className="news-card">
-      <div className="card__content">
-        <div className="card__image-container">
-          {isSaved && <span className="card__keyword">{keyword}</span>}
+      <div className="news-card__content">
+        <div className="news-card__image-container">
+          {isSaved && <span className="news-card__keyword">{keyword}</span>}
           {isSaved && (
             <button
-              className="card__trash-btn"
+              className="news-card__trash-btn"
               onClick={handleRemoveArticle}
               title="Remove article"
             >
-              <span className="card__remove-tag">Remove from saved</span>
+              <span className="news-card__remove-tag">Remove from saved</span>
               <img
                 src={trashIcon}
                 alt="remove article"
-                className="card__trash-icon"
+                className="news-card__trash-icon"
               />
             </button>
           )}
           {!isSaved && (
             <button
-              className={`card__bookmark-btn ${
-                isBookmarked && isLoggedIn ? "card__bookmark-btn--active" : ""
+              className={`news-card__bookmark-btn ${
+                isBookmarked && isLoggedIn ? "news-card__bookmark-btn--active" : ""
               }`}
               onClick={handleBookmarkClick}
               title={!isLoggedIn ? "Please log in to save articles" : ""}
             >
               {!isLoggedIn && (
-                <span className="card__bookmark-tag">
+                <span className="news-card__bookmark-tag">
                   Sign in to save articles
                 </span>
               )}
@@ -90,24 +90,24 @@ function NewsCard({ article, isLoggedIn, keyword, isSaved, onArticleRemove, curr
                   isBookmarked && isLoggedIn ? bookmarkMarkedIcon : bookmarkIcon
                 }
                 alt="bookmark"
-                className="card__bookmark-icon"
+                className="news-card__bookmark-icon"
               />
             </button>
           )}
           <img
             src={urlToImage}
             alt={title}
-            className="card__image"
+            className="news-card__image"
             onError={(e) => {
               e.target.src = "https://placehold.co/600x400?text=No+Image";
             }}
           />
         </div>
-        <div className="card__info">
-          <time className="card__date">{formatDate(publishedAt)}</time>
-          <h2 className="card__title">{title}</h2>
-          <p className="card__description">{description}</p>
-          <p className="card__publisher">{source.name}</p>
+        <div className="news-card__info">
+          <time className="news-card__date">{formatDate(publishedAt)}</time>
+          <h2 className="news-card__title">{title}</h2>
+          <p className="news-card__description">{description}</p>
+          <p className="news-card__publisher">{source.name}</p>
         </div>
       </div>
     </article>
