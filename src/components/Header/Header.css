@@ -1,12 +1,11 @@
 .header {
   height: 80px;
-  position: absolute;
-  top: 0;
+  position: relative;
   width: 100%;
+  margin-bottom: -80px;
   z-index: 1;
   background-color: transparent;
   border-bottom: 1px solid rgba(229, 229, 229, 0.3);
-  margin: 0;
 }
 
 .header-content {
@@ -23,7 +22,6 @@
 .header__logo {
   width: 117px;
   height: 24px;
-  padding-bottom: 40px;
 }
 
 @media screen and (max-width: 320px) {
@@ -33,5 +31,9 @@
 
   .header-content {
     padding: 0 16px;
+  }
+
+  .header__logo {
+    padding-bottom: 40px;
   }
 }

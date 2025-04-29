@@ -33,7 +33,7 @@
   letter-spacing: 0px;
   max-width: 608px;
   text-align: left;
-  margin: 0 0 32px;
+  margin: 90px 0 32px;
 }
 
 .main__subtitle {
@@ -80,6 +80,7 @@
   .main__title {
     font-size: 36px;
     line-height: 40px;
+    margin-top: 30px;
     padding-top: 45px;
     letter-spacing: -1px;
   }
