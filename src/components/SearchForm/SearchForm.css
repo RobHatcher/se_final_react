@@ -1,8 +1,9 @@
 .search-form {
   position: relative;
-  width: 608px;
+  width: 100%;
+  max-width: 608px;
   height: 64px;
-}
+  }
 
 .search-form__input {
   width: 100%;
@@ -66,12 +67,14 @@
 
   .search-form__input {
     position: static;
-    width: 288px;
+    width: 100%;
+    max-width: 288px;
     margin-right: 0;
   }
 
   .search-form__button {
     position: static;
-    width: 288px;
+    width: 100%;
+    max-width: 288px;
   }
 }

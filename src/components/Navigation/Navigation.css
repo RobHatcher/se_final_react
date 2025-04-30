@@ -207,7 +207,21 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 525px) and (min-width: 400px) {
+  .navigation__desktop-links {
+    gap: 15px;
+    padding-left: 30px;
+  }
+}
+
+@media screen and (max-width: 399px) and (min-width: 366px) {
+  .navigation__desktop-links {
+    gap: 5px;
+    padding-left: 30px;
+  }
+}
+
+@media screen and (max-width: 365px) {
   .navigation__menu-button {
     display: block;
     background-color: transparent;
@@ -237,7 +251,7 @@
   }
 }
 
-@media screen and (min-width: 321px) {
+@media screen and (min-width: 366px) {
   .navigation__mobile-menu {
     display: none !important;
   }

@@ -61,6 +61,7 @@ const NewsSection = ({
 
   return (
     <section className="news-section">
+      <div className="news-section__container">
       <h2 className="news-section__results">Search Results</h2>
       <div className="news-section__cards">
         {articles.slice(0, visibleCount).map((article, index) => (
@@ -72,6 +73,7 @@ const NewsSection = ({
             currentUser={currentUser}
           />
         ))}
+      </div>
       </div>
       {articles.length > visibleCount && (
         <button className="show-more-button" onClick={handleShowMore}>

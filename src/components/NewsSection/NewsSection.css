@@ -5,6 +5,11 @@
   background-color: #f5f6f7;
 }
 
+.news-section__container {
+  display: flex;
+  flex-direction: column;
+}
+
 .news-section__cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -87,6 +92,18 @@
   .news-section__cards {
     justify-content: center;
     gap: 8px;
+  }
+}
+
+@media screen and (max-width: 688px) and (min-width: 460px) {
+  .news-section__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 459px) and (min-width: 321px) {
+  .news-section__cards {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
