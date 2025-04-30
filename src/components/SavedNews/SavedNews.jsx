@@ -32,16 +32,18 @@ function SavedNews() {
   return (
     <main className="saved-news">
       <div className="saved-news__header">
-        <h1 className="saved-news__title">Saved articles</h1>
-        <p className="saved-news__greeting">
-          {currentUser?.name}, you have {savedArticles.length} saved articles
-        </p>
-        <p className="saved-news__keywords">
-          By Keywords:{" "}
-          <span className="saved-news__keywords-list">
-            {keywords.join(", ") || "No keywords yet"}
-          </span>
-        </p>
+        <div className="saved-news__header-content">
+          <h1 className="saved-news__title">Saved articles</h1>
+          <p className="saved-news__greeting">
+            {currentUser?.name}, you have {savedArticles.length} saved articles
+          </p>
+          <p className="saved-news__keywords">
+            By Keywords:{" "}
+            <span className="saved-news__keywords-list">
+              {keywords.join(", ") || "No keywords yet"}
+            </span>
+          </p>
+        </div>
       </div>
       <div className="saved-news__container">
         {savedArticles.length === 0 ? (
@@ -55,7 +57,7 @@ function SavedNews() {
                 isLoggedIn={true}
                 keyword={article.keyword}
                 isSaved={true}
-                onArticleRemove={fetchSavedArticles} 
+                onArticleRemove={fetchSavedArticles}
                 currentUser={currentUser}
               />
             ))}

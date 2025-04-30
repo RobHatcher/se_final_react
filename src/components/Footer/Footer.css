@@ -1,9 +1,16 @@
+.footer-wrapper {
+  width: 100%;
+  background-color: #fff;
+}
+
 .footer {
+  max-width: 1440px;
+  margin: 0 auto;
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 104px;
 }
 
 .footer__text {

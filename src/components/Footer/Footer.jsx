@@ -8,13 +8,14 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer">
-      <div className="footer__copyright">
-        <p className="footer__text">
-          &copy;{currentYear} Supersite, Powered by News API
-        </p>
-      </div>
-      <div className="footer__navigation">
+    <footer className="footer-wrapper">
+      <div className="footer">
+        <div className="footer__copyright">
+          <p className="footer__text">
+            &copy;{currentYear} Supersite, Powered by News API
+          </p>
+        </div>
+        <div className="footer__navigation">
           <Link to="/" className="footer__link">
             Home
           </Link>
@@ -43,6 +44,7 @@ function Footer() {
             <FaFacebook />
           </a>
         </div>
+      </div>
     </footer>
   );
 }
